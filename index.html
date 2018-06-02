@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" >
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" ></script>
+ 
+	<style>
+a,
+a:focus,
+a:hover {
+  color: #fff;
+}
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritance from `body` */
+  background-color: #fff;
+  border: .05rem solid #fff;
+}
+html,
+body {
+  height: 100%;
+  background-color: #333;
+}
+body {
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 .05rem .1rem rgba(0,0,0,.5);
+}
+.site-wrapper {
+  display: table;
+  width: 100%;
+  height: 100%; /* For at least Firefox */
+  min-height: 100%;
+  -webkit-box-shadow: inset 0 0 5rem rgba(0,0,0,.5);
+          box-shadow: inset 0 0 5rem rgba(0,0,0,.5);
+}
+.site-wrapper-inner {
+  display: table-cell;
+  vertical-align: top;
+}
+.cover-container {
+  margin-right: auto;
+  margin-left: auto;
+}
+.inner {
+  padding: 2rem;
+}
+.masthead {
+  margin-bottom: 2rem;
+}
+
+.masthead-brand {
+  margin-bottom: 0;
+}
+
+.nav-masthead .nav-link {
+  padding: .25rem 0;
+  font-weight: bold;
+  color: rgba(255,255,255,.5);
+  background-color: transparent;
+  border-bottom: .25rem solid transparent;
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+  border-bottom-color: rgba(255,255,255,.25);
+}
+
+.nav-masthead .nav-link + .nav-link {
+  margin-left: 1rem;
+}
+
+.nav-masthead .active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+@media (min-width: 48em) {
+  .masthead-brand {
+    float: left;
+  }
+  .nav-masthead {
+    float: right;
+  }
+}
+.cover {
+  padding: 0 1.5rem;
+}
+.cover .btn-lg {
+  padding: .75rem 1.25rem;
+  font-weight: bold;
+}
+.mastfoot {
+  color: rgba(255,255,255,.5);
+}
+@media (min-width: 40em) {
+  /* Pull out the header and footer */
+  .masthead {
+    position: fixed;
+    top: 0;
+  }
+  .mastfoot {
+    position: fixed;
+    bottom: 0;
+  }
+  /* Start the vertical centering */
+  .site-wrapper-inner {
+    vertical-align: middle;
+  }
+  /* Handle the widths */
+  .masthead,
+  .mastfoot,
+  .cover-container {
+    width: 100%; /* Must be percentage or pixels for horizontal alignment */
+  }
+}
+
+@media (min-width: 62em) {
+  .masthead,
+  .mastfoot,
+  .cover-container {
+    width: 42rem;
+  }
+}
+	</style>
+    <title>My Ip</title>
+	<script>
+	function getIP(json) {
+		var ip = json.ip;
+		var isp = "";
+		var hostname = "";
+		var longitude = "";
+		var latitude = "";
+		var postal_code = "";
+		var city = "";
+		var country = "";
+		var region = "";
+		
+		
+		$(document).ready(function () {
+		$('#ip1').text(ip);
+		$.getJSON('https://json.geoiplookup.io/api?callback=?', function(data) {
+		$('#data').text(JSON.stringify(data, null, 2));
+		$('#isp').text("Provider: "+data.isp);
+		$('#hostname').text("Hostname: "+data.hostname);
+		$('#longitude').text("Longitude: "+data.longitude);
+		$('#latitude').text("Latitude: "+data.latitude);
+		$('#postalcode').text("Postal code: "+data.postal_code);
+		$('#city').text("City: "+data.city);
+		$('#country').text("Country: "+data.country_name);
+		$('#region').text("Region: "+data.region);
+		
+		});
+
+});
+}
+
+</script>
+
+
+<script src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+
+	
+  </head>
+  <body>
+  <script> 
+  
+  </script>
+ <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">My IP</h3>
+            </div>
+          </div>
+
+          <div class="inner cover">
+            <h1 class="cover-heading">Your IP:</h1>
+			<div class="alert alert-dark" role="alert">
+			<p id="ip1" >127.0.0.1</p>
+			</div>
+			<p id="isp" class="lead"></p>
+			<p id="hostname" class="lead"></p>
+			<p id="longitude" class="lead"></p>
+			<p id="latitude" class="lead"></p>
+			<p id="postalcode" class="lead"></p>
+			<p id="city" class="lead"></p>
+			<p id="region" class="lead"></p>
+			<p id="country" class="lead"></p>
+		  </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>Created by  <a href="https://github.com/gabriellhuver">Gabriell H.</a> Full non-commercial</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+ </body>
+</html>
